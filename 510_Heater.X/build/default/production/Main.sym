@@ -1,0 +1,97 @@
+W0      @SCRATCH
+W0L     _RETURN_
+W0      @delay_us1.P1
+W0 -W1  @READ_ROM_MEMORY.P2
+W0 -W1  @DIV3232B.P3
+W0 -W1  @SPI_XFER_1.P4
+W0 -W1  @MULFF.P5
+W0      @ITOF.P6
+W0      @delay_ms1.P7
+W1      @SCRATCH
+W1      @READ_PACKED_MEMORY.P1
+W1      @WRITE_PACKED_MEMORY.P2
+W2      @READ_ROM_MEMORY.P1
+W2      @WRITE_PACKED_MEMORY.P2
+W2 -W3  @MULFF.P3
+W2 -W3  @DIV3232B.P4
+W2      @READ_PACKED_MEMORY.P5
+W2      @SPI_XFER_IN_1.P6
+W2      @SPI_XFER_1.P7
+W3      @READ_PACKED_MEMORY.P1
+W3      @WRITE_PACKED_MEMORY.P2
+W3      @READ_ROM_MEMORY.P3
+800     @SPIWRITE_1
+801     SPI_Flag
+802-805 Alpha
+806-809 Cofficent
+80A     Byte_Count
+80B     Rx
+80C     Tx
+80D     Cmand
+80E     ProbeID
+80F     count
+810     Version
+811     PWM1
+812     PWM2
+813     PWM3
+814     PWM4
+815     AmpSPI1
+816     AmpSPI2
+817     AmpSPI3
+818     AmpSPI4
+81A-81D Current1
+81E-821 Current2
+822-825 Current3
+826-829 Current4
+82A-82B value
+82C-82D duty1
+82E-82F duty2
+830-831 duty3
+832-833 duty4
+3F80-3FFF Stack
+
+ROM Allocation:
+000200  @SPI_XFER_IN_1
+00022C  spi2_slave_isr
+0003C0  @MULFF
+000484  @cinit1
+000484  MAIN
+0004EA  @cinit2
+
+Project Directory:
+    C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\
+
+Project Files:
+    Main.c                                                  [05-Feb-18 15:10  CRC=DD529CC5]
+    ..\..\..\..\..\Program Files (x86)\PICC\devices\33FJ256GP510.h [21-Jul-17 12:47  CRC=079315C6]
+
+Source signature=EC78C851
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=1ED7
+
+Units:
+    Main (main)
+
+Compiler Settings:
+    Processor:      DSPIC33FJ256GP510
+    Pointer Size:   16
+    ADC Range:      0-4095
+    Opt Level:      9
+    Short,Int,Long: SIGNED: 8,16,32
+    Float,Double:   32,64
+    Compile Mode:       CCS5
+    Predefined symbols:
+       #define __dsPIC33FJ256GP510__ 1
+
+Output Files:
+    XREF file:   build\default\production\Main.xsym
+    Errors:      build\default\production\Main.err
+    Ext Symbols: build\default\production\Main.esym
+    INHX8:       build\default\production\Main.hex
+    Symbols:     build\default\production\Main.sym
+    List:        build\default\production\Main.lst
+    Debug/COFF:  build\default\production\Main.cof
+    Project:     Main.ccspjt
+    Call Tree:   build\default\production\Main.tre
+    Statistics:  build\default\production\Main.STA

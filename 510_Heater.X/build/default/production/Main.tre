@@ -1,0 +1,6 @@
+юд510_Heater
+   цдMAIN  0/182  Ram=0
+   Ё  юд@cinit1  (Inline)  Ram=0
+   Ё     юд@MULFF  0/196  Ram=58
+   юдspi2_slave_isr  0/404  Ram=0
+      юд@SPI_XFER_IN_1  0/44  Ram=5

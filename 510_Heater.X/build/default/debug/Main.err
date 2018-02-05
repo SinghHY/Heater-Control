@@ -1,0 +1,9 @@
+C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:110:1:  Warning#203  Condition always TRUE
+C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:23:38:  Warning#202  Variable never used:   duty
+C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:23:48:  Warning#202  Variable never used:   T_line_Heater
+C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:25:15:  Warning#202  Variable never used:   data
+C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:29:15:  Warning#202  Variable never used:   Version
+C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:34:19:  Warning#202  Variable never used:   Error
+      Memory usage:   ROM=1%      RAM=1% - 1%
+      0 Errors,  6 Warnings.
+Build Successful.
