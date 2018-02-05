@@ -1,9 +1,8 @@
 /**********************************************************************
 * Temperature Control 
 * © PerkinElmer Health Sciences Canada, Inc., 2017
-* This program is for Heater control U26. 
+* This program is for Heater control U26 on old Board. 
 * FileName:        Main.c
-* Dependencies:    Header (33FJ256GP710A.h) files
 * Processor:       dsPIC33FJ256GP510A
 * Compiler:        CCS v5.074 or Higher
 * Version:     
