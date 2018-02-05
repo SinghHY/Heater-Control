@@ -152,6 +152,6 @@ void main()
        
 
        AmpSPI1  = read_adc();
-       //AmpSPI2  = (int8)LP_Filter(2);
+       AmpSPI2  = (int8)LP_Filter(2);
     }
 }   
