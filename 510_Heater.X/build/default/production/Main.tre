@@ -1,6 +1,17 @@
 ÀÄ510_Heater
-   ÃÄMAIN  0/182  Ram=0
-   ³  ÀÄ@cinit1  (Inline)  Ram=0
-   ³     ÀÄ@MULFF  0/196  Ram=58
-   ÀÄspi2_slave_isr  0/404  Ram=0
-      ÀÄ@SPI_XFER_IN_1  0/44  Ram=5
+   ÃÄMAIN  0/260  Ram=0
+   ³  ÃÄ@cinit1  (Inline)  Ram=0
+   ³  ³  ÀÄ@MULFF  0/196  Ram=59
+   ³  ÃÄLP_Filter  0/126  Ram=20
+   ³  ³  ÃÄ@ITOF  0/58  Ram=127
+   ³  ³  ÃÄ@MULFF  0/196  Ram=59
+   ³  ³  ÃÄ@ADDFF  0/426  Ram=59
+   ³  ³  ÃÄ@SFTOI  0/44  Ram=61
+   ³  ³  ÀÄ@SFTOI  0/44  Ram=61
+   ³  ÃÄ@SITOF  0/74  Ram=127
+   ³  ÃÄ@ADDFF  0/426  Ram=59
+   ³  ÃÄ@FLT  0/104  Ram=58
+   ³  ÃÄ@MULFF  0/196  Ram=59
+   ³  ÀÄ@SFTOI  0/44  Ram=61
+   ÀÄspi2_slave_isr  0/262  Ram=1
+      ÀÄ@SPI_XFER_IN_1  0/44  Ram=6

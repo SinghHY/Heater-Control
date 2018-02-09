@@ -1,25 +1,31 @@
 W0      @SCRATCH
 W0L     _RETURN_
-W0      @delay_us1.P1
+W0 -W1  @SPI_XFER_1.P1
 W0 -W1  @READ_ROM_MEMORY.P2
-W0 -W1  @DIV3232B.P3
-W0 -W1  @SPI_XFER_1.P4
-W0 -W1  @MULFF.P5
-W0      @ITOF.P6
-W0      @delay_ms1.P7
+W0 -W1  @ADDFF.P3
+W0      @delay_us1.P4
+W0      @SITOF.P5
+W0 -W1  @DIV3232B.P6
+W0      @ITOF.P7
+W0 -W1  @MULFF.P8
+W0 -W1  @SFTOI.P9
+W0 -W1  @FLT.P10
+W0      @delay_ms1.P11
 W1      @SCRATCH
 W1      @READ_PACKED_MEMORY.P1
 W1      @WRITE_PACKED_MEMORY.P2
-W2      @READ_ROM_MEMORY.P1
-W2      @WRITE_PACKED_MEMORY.P2
-W2 -W3  @MULFF.P3
-W2 -W3  @DIV3232B.P4
-W2      @READ_PACKED_MEMORY.P5
-W2      @SPI_XFER_IN_1.P6
+W2      @SPI_XFER_IN_1.P1
+W2 -W3  @DIV3232B.P2
+W2      @READ_PACKED_MEMORY.P3
+W2      @READ_ROM_MEMORY.P4
+W2 -W3  @ADDFF.P5
+W2 -W3  @MULFF.P6
 W2      @SPI_XFER_1.P7
-W3      @READ_PACKED_MEMORY.P1
-W3      @WRITE_PACKED_MEMORY.P2
-W3      @READ_ROM_MEMORY.P3
+W2      @WRITE_PACKED_MEMORY.P8
+W2 -W3  @FLT.P9
+W3      @WRITE_PACKED_MEMORY.P1
+W3      @READ_ROM_MEMORY.P2
+W3      @READ_PACKED_MEMORY.P3
 800     @SPIWRITE_1
 801     SPI_Flag
 802-805 Alpha
@@ -31,44 +37,49 @@ W3      @READ_ROM_MEMORY.P3
 80E     ProbeID
 80F     count
 810     Version
-811     PWM1
-812     PWM2
-813     PWM3
-814     PWM4
-815     AmpSPI1
-816     AmpSPI2
-817     AmpSPI3
-818     AmpSPI4
-81A-81D Current1
-81E-821 Current2
-822-825 Current3
-826-829 Current4
-82A-82B value
-82C-82D duty1
-82E-82F duty2
-830-831 duty3
-832-833 duty4
+811     SP
+812     Temp
+813     LTMR
+814     MV
+816-817 value
+818-819 duty
+81A-81D Kp
+81E-821 C_out
+822-825 Set_Point
+826-829 M_Variable
+82A-82D Error
+82E-82F LP_Filter.ch
+830-833 LP_Filter.Filter_Out
+834-835 LP_Filter.i
+836-837 LP_Filter.sum
+838-841 LP_Filter.Sample
 3F80-3FFF Stack
 
 ROM Allocation:
 000200  @SPI_XFER_IN_1
 00022C  spi2_slave_isr
-0003C0  @MULFF
-000484  @cinit1
-000484  MAIN
-0004EA  @cinit2
+000332  @MULFF
+0003F6  @ITOF
+000430  @ADDFF
+0005DA  @SFTOI
+000606  LP_Filter
+000684  @SITOF
+0006CE  @FLT
+000736  MAIN
+000736  @cinit1
+0007B6  @cinit2
 
 Project Directory:
-    C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\
+    C:\GitRepo\Heater-Control\510_Heater.X\
 
 Project Files:
-    Main.c                                                  [05-Feb-18 15:10  CRC=DD529CC5]
-    ..\..\..\..\..\Program Files (x86)\PICC\devices\33FJ256GP510.h [21-Jul-17 12:47  CRC=079315C6]
+    Main.c                                                  [09-Feb-18 11:13  CRC=5E4564E3]
+    ..\..\..\Program Files (x86)\PICC\devices\33FJ256GP510.h [21-Jul-17 12:47  CRC=079315C6]
 
-Source signature=EC78C851
+Source signature=6D6B906F
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=1ED7
+Hex file CRC=2B6F
 
 Units:
     Main (main)

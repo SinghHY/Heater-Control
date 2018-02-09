@@ -1,14 +1,10 @@
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:145:1:  Warning#203  Condition always TRUE
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:35:6:  Warning#202  Variable never used:   SPI_Flag
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:35:40:  Warning#202  Variable never used:   Tx
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:35:63:  Warning#202  Variable never used:   count
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:39:7:  Warning#202  Variable never used:   Current1
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:39:17:  Warning#202  Variable never used:   Current2
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:39:27:  Warning#202  Variable never used:   Current3
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:39:37:  Warning#202  Variable never used:   Current4
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:40:5:  Warning#202  Variable never used:   value
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:40:12:  Warning#202  Variable never used:   duty1
-C:\Users\SinghHy\Documents\PIC Micro\510_Heater.X\Main.c:40:33:  Warning#202  Variable never used:   duty4
-      Memory usage:   ROM=1%      RAM=1% - 1%
-      0 Errors,  11 Warnings.
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:130:1:  Warning#203  Condition always TRUE
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:29:6:  Warning#202  Variable never used:   SPI_Flag
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:29:40:  Warning#202  Variable never used:   Tx
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:29:63:  Warning#202  Variable never used:   count
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:30:26:  Warning#202  Variable never used:   Temp
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:30:32:  Warning#202  Variable never used:   LTMR
+C:\GitRepo\Heater-Control\510_Heater.X\Main.c:31:5:  Warning#202  Variable never used:   value
+      Memory usage:   ROM=1%      RAM=1% - 2%
+      0 Errors,  7 Warnings.
 Build Successful.

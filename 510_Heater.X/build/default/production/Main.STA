@@ -1,48 +1,54 @@
 
-ROM used:   1338/175104 (1%)
-            1338/175104 (1%) including unused fragments
+ROM used:   2106/175104 (1%)
+            2106/175104 (1%) including unused fragments
 
-            1.1 Average locations per line
-            18.6 Average locations per statement
+            1.7 Average locations per line
+            38.3 Average locations per statement
 
-RAM used:   179/16384 (1%) at main() level
-            237/16384 (1%) worst case
+RAM used:   173/16384 (1%) at main() level
+            322/16384 (2%) worst case
 
-Stack used: 56 worst case (14 in main + 42 for interrupts)
+Stack used: 62 worst case (20 in main + 42 for interrupts)
 Stack size: 128
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  159    72 100  Main.c
- 1071     0   0  ..\..\..\..\..\Program Files (x86)\PICC\devices\33FJ256GP510.h
+  143    55 100  Main.c
+ 1071     0   0  ..\..\..\Program Files (x86)\PICC\devices\33FJ256GP510.h
 ----- -----
- 1230    72 Total
+ 1214    55 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
-0     44   2    5             @SPI_XFER_IN_1
-0    196   7   58             @MULFF
-0    404  15    0   1340  6.8  spi2_slave_isr
-0    182   7    0    580  3.8  MAIN
+0     44   1    6             @SPI_XFER_IN_1
+0    196   5   59             @MULFF
+0    262   6    1    816  6.6  spi2_slave_isr
+0    126   3   20    400  6.5  LP_Filter
+0     58   1  127             @ITOF
+0    426  10   59             @ADDFF
+0     44   1   61             @SFTOI
+0    260   6    0    542  5.3  MAIN
+0     74   2  127             @SITOF
+0    104   2   58             @FLT
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               2
-    Statements              72
-    Comments                169
-    Volume (V)              2207
-    Difficulty (D)          10.3
-    Effort to implement (E) 22833
-    Time to implement (T)   21 minutes
+    Functions               3
+    Statements              55
+    Comments                175
+    Volume (V)              2240
+    Difficulty (D)          17.3
+    Effort to implement (E) 38665
+    Time to implement (T)   36 minutes
     Est Delivered Bugs (B)  0
-    Cyclomatic Complexity   18
-    Maintainability (MI)    124
+    Cyclomatic Complexity   15
+    Maintainability (MI)    55
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-001FE   508  0  
-00200-0FFFE   826  64198  
+00200-0FFFE  1594  63430  
 10000-1FFFE     0  65536  
 20000-2ABFE     0  44032  
 
