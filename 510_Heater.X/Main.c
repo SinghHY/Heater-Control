@@ -21,18 +21,17 @@
 float Alpha = 0.1611328125;
 /******************************************************************************/
 // PID Parameters//
-float C_out = 0, Set_Point, M_Variable = 95, Error = 0,  Previous_Error;
-float dt = 0.01,  Kp = 0.5, Ki = 0.01, Kd = 0.1, Integral = 0, Derivative = 0;
+float C_out = 0, Set_Point, M_Variable = 0, Error = 0,  Previous_Error;
+float dt = 0.01,  Kp = 5, Ki = 0, Kd = 0.1, Integral = 0, Derivative = 0;
 /******************************************************************************/
 
 int8 SPI_Flag = 0, Byte_Count = 0, Rx, Tx, Cmand, ProbeID = 2,count = 0;
-int Version = 7,SP = 200, Temp, LTMR, MV;
+int Version = 7,SP = 50, Temp, LTMR, MV;
 unsigned int Value, Duty, Err_cnt = 0;
 
 /******************************************************************************/
 // 8 bits SPI
-#INT_SPI2
-
+#INT_SPI2 Level = 7
 
 void spi2_slave_isr(void)
 {
@@ -83,15 +82,12 @@ void spi2_slave_isr(void)
 
 
 
-#INT_TIMER1 Level = 7
+#INT_TIMER1 Level = 6
 void  timer1_isr(void) 
 {
     M_Variable= ((float)read_adc() * Alpha) + 12;
     
     Error = Set_Point - M_Variable;
-        if(Error < 0)
-           Error = 0;
-    Integral = Integral + Error*dt;
     Derivative = (Error - Previous_Error)/dt;
     Previous_Error = Error;
 }
@@ -106,12 +102,13 @@ void main()
    // Timer 1 for 10 ms INT when clock is 100MHz
    setup_timer1(TMR_INTERNAL | TMR_DIV_BY_64, 7812); 
 
-    //Frequency 258 Hz set up for PWM 2,3   
-   setup_timer2(TMR_INTERNAL | TMR_DIV_BY_256, 500);
+    //Frequency ...... Hz set up for PWM 2,3   
+   setup_timer2(TMR_INTERNAL | TMR_DIV_BY_64, 500);
    setup_compare(2, COMPARE_PWM | COMPARE_TIMER2);
    set_pwm_duty(2,0);
 
    enable_interrupts(INT_TIMER1); 
+   enable_interrupts(INT_SPI2);
    enable_interrupts(INTR_GLOBAL);
   
    while(1)
@@ -120,7 +117,7 @@ void main()
       MV  = (int8)M_Variable;
       Set_Point = (float)SP;
               
-      C_out = (Kp * Error) + (Ki * Integral);
+      C_out = (Kp * Error);
       if(C_out > 500)
           C_out = 500;
       else if(C_out < 0)
