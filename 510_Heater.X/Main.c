@@ -16,20 +16,18 @@
 
 
 /******************************************************************************/
-// Moving Average FIlter Parameters
+// ADC Parameters
 // Alpha = 0.1611328125 = 660/4096 ; 660 is maximum temperature value; 5mV/ 1C change
-#define Sample_Length  5
 float Alpha = 0.1611328125;
-float Cofficent = (1/(float)Sample_Length) * Alpha;
 /******************************************************************************/
 // PID Parameters//
-
+float C_out = 0, Set_Point, M_Variable = 95, Error = 0,  Previous_Error;
+float dt = 0.01,  Kp = 0.5, Ki = 0.01, Kd = 0.1, Integral = 0, Derivative = 0;
 /******************************************************************************/
 
 int8 SPI_Flag = 0, Byte_Count = 0, Rx, Tx, Cmand, ProbeID = 2,count = 0;
-int8 Version = 7,SP = 0, Temp, LTMR, MV;
-int Value, Duty;
-float  Kp = 0.5, C_out = 0, Set_Point, M_Variable, Error;
+int Version = 7,SP = 200, Temp, LTMR, MV;
+unsigned int Value, Duty, Err_cnt = 0;
 
 /******************************************************************************/
 // 8 bits SPI
@@ -85,30 +83,18 @@ void spi2_slave_isr(void)
 
 
 
-LP_Filter(int ch)
-  {
-    float Filter_Out;
-    unsigned int16 i,sum, Sample[Sample_Length];
-
-    set_adc_channel(ch);
-    for(i = 0; i < Sample_Length; i++)
-        {
-            Sample[i] = read_adc();
-            sum += Sample[i];
-        }    
-        //Filter_Out = ((float)sum * Cofficent) + 12;
-        M_Variable = ((float)sum * Cofficent) + 12;
-        MV  = (int8)M_Variable;
-        sum = 0;
-    return(Filter_Out);    
-  }
-
-/*#INT_TIMER1
+#INT_TIMER1 Level = 7
 void  timer1_isr(void) 
 {
-    LTMR = 1;
-
-}*/
+    M_Variable= ((float)read_adc() * Alpha) + 12;
+    
+    Error = Set_Point - M_Variable;
+        if(Error < 0)
+           Error = 0;
+    Integral = Integral + Error*dt;
+    Derivative = (Error - Previous_Error)/dt;
+    Previous_Error = Error;
+}
 
 
 void main()
@@ -116,27 +102,33 @@ void main()
    output_float(PIN_G9); // SS as an input
    setup_adc_ports(sAN0, VSS_VDD);
    setup_adc(ADC_CLOCK_INTERNAL);
-   // Timer 1 for 100ms INT
-   //setup_timer1(TMR_INTERNAL | TMR_DIV_BY_256, 7812); 
+   set_adc_channel(0);
+   // Timer 1 for 10 ms INT when clock is 100MHz
+   setup_timer1(TMR_INTERNAL | TMR_DIV_BY_64, 7812); 
 
     //Frequency 258 Hz set up for PWM 2,3   
-   setup_timer2(TMR_INTERNAL | TMR_DIV_BY_256, 100);
+   setup_timer2(TMR_INTERNAL | TMR_DIV_BY_256, 500);
    setup_compare(2, COMPARE_PWM | COMPARE_TIMER2);
    set_pwm_duty(2,0);
 
-   //enable_interrupts(INT_TIMER1); 
-   enable_interrupts(INT_SPI2);
+   enable_interrupts(INT_TIMER1); 
    enable_interrupts(INTR_GLOBAL);
+  
    while(1)
     {
 
-       LP_Filter(0);
-       Set_Point = (float)SP;
-       Error = Set_Point - M_Variable;
-            if(Error < 0)
-                Error = 0;
-        C_out = Kp * Error;
-        Duty = (int)C_out;
+      MV  = (int8)M_Variable;
+      Set_Point = (float)SP;
+              
+      C_out = (Kp * Error) + (Ki * Integral);
+      if(C_out > 500)
+          C_out = 500;
+      else if(C_out < 0)
+          C_out = 0;
+      else
+      { 
+        Duty = (unsigned int)C_out;
         set_pwm_duty(2,Duty);
+      }
     }
 }   
