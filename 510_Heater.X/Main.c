@@ -26,12 +26,12 @@ float dt = 0.01,  Kp = 5, Ki = 0, Kd = 0.1, Integral = 0, Derivative = 0;
 /******************************************************************************/
 
 int8 SPI_Flag = 0, Byte_Count = 0, Rx, Tx, Cmand, ProbeID = 2,count = 0;
-int Version = 7,SP = 50, Temp, LTMR, MV;
+int Version = 7,SP = 0, Temp, LTMR, MV;
 unsigned int Value, Duty, Err_cnt = 0;
 
 /******************************************************************************/
 // 8 bits SPI
-#INT_SPI2 Level = 7
+#INT_SPI2
 
 void spi2_slave_isr(void)
 {
@@ -82,12 +82,13 @@ void spi2_slave_isr(void)
 
 
 
-#INT_TIMER1 Level = 6
+#INT_TIMER1 fast
 void  timer1_isr(void) 
 {
     M_Variable= ((float)read_adc() * Alpha) + 12;
     
     Error = Set_Point - M_Variable;
+    Integral = Integral + (Error * dt);
     Derivative = (Error - Previous_Error)/dt;
     Previous_Error = Error;
 }
