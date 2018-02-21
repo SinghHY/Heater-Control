@@ -1,7 +1,7 @@
 D G "__PCD__" 0 0 ""5.074""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""09-Feb-18""
-D G "__TIME__" 0 0 ""11:13:24""
+D G "__DATE__" 0 0 ""20-Feb-18""
+D G "__TIME__" 0 0 ""13:58:53""
 D G "_UNICODE" 0 0 ""?""
 D G "__EVAL" 0 0 ""?""
 D G "__dsPIC33FJ256GP510__" 0 0 "1" "* Temperature Control"
@@ -1595,44 +1595,46 @@ d G "INT_UART2E" 1 1065 "131"
 d G "INT_DMA6" 1 1066 "133"
 d G "INT_DMA7" 1 1067 "134"
 d G "INT_C1TX" 1 1068 "135"
-D G "Sample_Length" 0 21 "5"
-V G "Alpha" 0 22 "float" `785 
-V G "Cofficent" 0 23 "float" `786 
+C L "jump_to_isr" 0 19 2 "FUNCTION"
+V G "Alpha" 0 21 "float" `785 
 C L "jump_to_isr" 0 19 1 "FUNCTION"
-V G "SPI_Flag" 0 29 "sint8" `790 
-V G "Byte_Count" 0 29 "sint8" `791 
-V G "Rx" 0 29 "sint8" `792 
-V G "Tx" 0 29 "sint8" `793 
-V G "Cmand" 0 29 "sint8" `794 
-V G "ProbeID" 0 29 "sint8" `795 
-V G "count" 0 29 "sint8" `796 
-V G "Version" 0 30 "sint8" `797 
-V G "SP" 0 30 "sint8" `798 
-V G "Temp" 0 30 "sint8" `799 
-V G "LTMR" 0 30 "sint8" `800 
-V G "MV" 0 30 "sint8" `801 
-V G "value" 0 31 "sint16" `802 
-V G "duty" 0 31 "sint16" `803 
-V G "Kp" 0 32 "float" `804 
-V G "C_out" 0 32 "float" `805 
-V G "Set_Point" 0 32 "float" `806 
-V G "M_Variable" 0 32 "float" `807 
-V G "Error" 0 32 "float" `808  "8 bits SPI"
-F N "spi2_slave_isr" 0 39 ""
-F G "spi2_slave_isr" 0 40 "void()" `809 
-F N "LP_Filter" 0 88 ""
-V L "ch" 0 88 "sint16" `811 
-F G "LP_Filter" 0 89 "int8(sint16 ch)" `810 
-V L "Filter_Out" 0 90 "float" `812 
-V L "i" 0 91 "int16" `813 
-V L "sum" 0 91 "int16" `814 
-V L "Sample" 0 91 "int16[5]" `815 
-C L "LP_Filter" 0 19 1 "FUNCTION"
-C L "MAIN" 0 19 4 "FUNCTION"
-F N "MAIN" 0 114 ""
-F G "MAIN" 0 115 "void()" `823 
+V G "C_out" 0 24 "float" `786 
+V G "Set_Point" 0 24 "float" `787 
+V G "M_Variable" 0 24 "float" `788 
+V G "Error" 0 24 "float" `789 
+V G "Previous_Error" 0 24 "float" `790 
+V G "dt" 0 25 "float" `791 
+V G "Kp" 0 25 "float" `792 
+V G "Ki" 0 25 "float" `793 
+V G "Kd" 0 25 "float" `794 
+V G "Integral" 0 25 "float" `795 
+V G "Derivative" 0 25 "float" `796 
+V G "SPI_Flag" 0 28 "sint8" `797 
+V G "Byte_Count" 0 28 "sint8" `798 
+V G "Rx" 0 28 "sint8" `799 
+V G "Tx" 0 28 "sint8" `800 
+V G "Cmand" 0 28 "sint8" `801 
+V G "ProbeID" 0 28 "sint8" `802 
+V G "count" 0 28 "sint8" `803 
+V G "Version" 0 29 "int8" `804 
+V G "SP" 0 29 "int8" `805 
+V G "SP_H" 0 29 "int8" `806 
+V G "Temp" 0 29 "int8" `807 
+V G "LTMR" 0 29 "int8" `808 
+V G "MV" 0 29 "int8" `809 
+V G "value" 0 30 "int16" `810 
+V G "duty" 0 30 "int16" `811 
+V G "Err_cnt" 0 30 "int16" `812 
+C L "jump_to_isr" 0 19 1 "FUNCTION"
+F N "spi2_slave_isr" 0 36 ""
+F G "spi2_slave_isr" 0 37 "void()" `813 
+F N "timer1_isr" 0 87 ""
+F G "timer1_isr" 0 88 "void()" `814 
+F N "MAIN" 0 98 ""
+F G "MAIN" 0 99 "void()" `826 
 C L "MAIN" 0 19 1 "FUNCTION"
 C L "MAIN" 0 19 3 "FUNCTION"
+C L "MAIN" 0 19 1 "FUNCTION"
 C L "MAIN" 0 19 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

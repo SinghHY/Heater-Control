@@ -1,0 +1,4 @@
+*** Error 12 "Main.c" Line 96(5,13): Undefined identifier   Integral
+*** Error 12 "Main.c" Line 97(5,15): Undefined identifier   Derivative
+*** Error 12 "Main.c" Line 98(5,19): Undefined identifier   Previous_Error
+*** Error 12 "Main.c" Line 122(17,18): Undefined identifier  -- LP_Filter

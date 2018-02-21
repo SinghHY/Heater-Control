@@ -11,6 +11,21 @@ Type=4
 1=build\default\production\Main.c
 [build\default\debug\Main.c]
 Type=4
+
+[ProjectLog]
+Days=1
+D1=16-02-2018
+D1_L=7
+D1_L1=[46207]Project Closed.
+D1_L2=[50537]Project Opened.
+D1_L3=[50725]Project Closed.
+D1_L4=[50801]Project Opened.
+D1_L5=[51237]Project Closed.
+D1_L6=[54840]Project Opened.
+D1_L7=[57035]Project Closed.
+
+[fileformats]
+forcecoff=0
 [Units]
 Count=1
 1=Main (main)
