@@ -1,9 +1,0 @@
-ÀÄ510_Heater
-   ÃÄMAIN  0/188  Ram=1
-   ³  ÀÄ@cinit1  (Inline)  Ram=0
-   ÃÄspi2_slave_isr  0/158  Ram=1
-   ³  ÃÄ@SPI_XFER_IN_1  0/44  Ram=6
-   ³  ÀÄ@SPI_XFER_IN_1  0/44  Ram=6
-   ÀÄtimer1_isr  0/82  Ram=1
-      ÃÄ@ITOF  0/58  Ram=128
-      ÀÄ@DIVFF  0/202  Ram=58
